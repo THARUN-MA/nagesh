@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+{% load static %}
+<head>
+	<meta charset="utf-8">
+	<title>Form-v5 by Colorlib</title>
+	<!-- Mobile Specific Metas -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<!-- Font-->
+  <link href="{%static "css/roboto-font.css" %}" rel="stylesheet">
+  <link href="{%static "css/fontawesome-all.min.css" %}" rel="stylesheet">
+	<!-- Main Style Css -->
+    <link href="{%static "css/style.css" %}" rel="stylesheet">
+		<link href="{%static "css/bootstrap.min.css" %}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="{%static "css/starter-template.css" %}" rel="stylesheet">
+</head>
+<body class="form-v5">
+	<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+		<a class="navbar-brand" href="#">Navbar</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+		<div class="collapse navbar-collapse" id="navbarsExampleDefault">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item active">
+					<a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#">Link</a>
+				</li>
+				<!-- <li class="nav-item">
+					<a class="nav-link disabled" href="#">Disabled</a>
+				</li>
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+					<div class="dropdown-menu" aria-labelledby="dropdown01">
+						<a class="dropdown-item" href="#">Action</a>
+						<a class="dropdown-item" href="#">Another action</a>
+						<a class="dropdown-item" href="#">Something else here</a>
+					</div> -->
+				</li>
+			</ul>
+			<form class="form-inline my-2 my-lg-0">
+				<!-- <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search"> -->
+				<button class="btn btn-outline-success my-2 my-sm-0"  type="submit"><a href="{% url "index"%}">Home</a></button>&nbsp
+				<button class="btn btn-outline-success my-2 my-sm-0"  type="submit"><a href="{% url "fs:login"%}">LOGIN</a></button>
+			</form>
+		</div>
+	</nav>
+	<div class="page-content">
+		<div class="form-v5-content">
+			<form class="form-detail" action="#" method="post">
+        {% csrf_token %}
+				<h2>Register Account Form</h2>
+				<div class="form-row">
+					<label for="full-name">Full Name</label>
+					<input type="text" name="full-name" id="full-name" class="input-text" placeholder="Your Name" required>
+					<i class="fas fa-user"></i>
+				</div>
+				<div class="form-row">
+					<label for="your-email">Your Email</label>
+					<input type="text" name="your-email" id="your-email" class="input-text" placeholder="Your Email" required pattern="[^@]+@[^@]+.[a-zA-Z]{2,6}">
+					<i class="fas fa-envelope"></i>
+				</div>
+				<div class="form-row">
+					<label for="password">Password</label>
+					<input type="password" name="password" id="password" class="input-text" placeholder="Your Password" required>
+					<i class="fas fa-lock"></i>
+				</div>
+				<div class="form-row-last">
+					<input type="submit" name="register" class="register" value="Register">
+				</div>
+			</form>
+		</div>
+	</div>
+</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+</html>
