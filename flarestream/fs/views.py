@@ -1,5 +1,6 @@
 from django.shortcuts import render,redirect
-from fs.models import userdetail
+from fs.models import userdetail,subdetail
+import datetime as dt
 # Create your views here.
 def index(request):
     request.session['usr']=""
@@ -11,6 +12,7 @@ def signup(request):
             return redirect('fs:signup')
         else:
             userdetail(email=request.POST['your-email'],name=request.POST['full-name'],password=request.POST['password']).save()
+            subdetail(email=request.POST['your-email'],sub="0",date="0000-00-00").save()
             return redirect('fs:login')
     return render(request,'signup.html')
 
@@ -42,5 +44,20 @@ def dashboard(request):
 def admindash(request):
     if (request.session['usr'] and request.session['usr']=='admin'):
         return render(request,'admin.html')
+    else:
+        return redirect('fs:login')
+
+def subscription(request):
+    if request.session['usr']:
+        if request.method=="POST":
+            daa=str(dt.datetime.fromisoformat(str(dt.datetime.now()).split(' ')[0])+dt.timedelta(days=365)).split(' ')[0]
+            subdetail.objects.filter(email=request.session['usr']).update(date=daa,sub="1")
+            return redirect('fs:subscription')
+        a=subdetail.objects.filter(email=request.session['usr'])
+        if a[0].sub=="0":
+            return render(request,'subscription.html')
+        #     return render(request,'subscription.html')
+        else:
+            return render(request,'subscription.html',{'sub':a[0]})
     else:
         return redirect('fs:login')

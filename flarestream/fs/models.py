@@ -8,3 +8,11 @@ class userdetail(models.Model):
 
     def __str__(self):
         return self.email
+
+class subdetail(models.Model):
+    email=models.CharField(max_length=264,unique=True)
+    sub=models.CharField(max_length=264)
+    date=models.CharField(max_length=264)
+
+    def __str__(self):
+        return self.email

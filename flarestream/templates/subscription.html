@@ -1,0 +1,20 @@
+<h1>Subscription</h1>
+{% load static %}
+<a href="{% url "fs:dashboard"%}">Dashboard</a>
+<a href="{% url "fs:logout"%}">Logout</a>
+<form class="" action="index.html" method="post">
+  {% csrf_token%}
+  {% if sub %}
+  <h3>Subsciption is active</h3>
+  <h3>Till Date:- {{sub.date}}</h3>
+  {% else %}
+  <label for="">Enter the Card No</label>
+  <input type="text" name="cardno" placeholder="Enter the card no" value="">
+  <label for="">Enter the CVV</label>
+  <input type="text" name="cvvno" placeholder="Enter the CVV no" value="">
+  <label for="">Enter the PIN of the ATM card</label>
+  <input type="text" name="pinno" placeholder="Enter the PIN" value="">
+  <input type="submit" name="" value="Buy Subscription">
+  {% endif %}
+
+</form>

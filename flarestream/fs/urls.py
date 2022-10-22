@@ -9,4 +9,5 @@ urlpatterns=[
     url('logout/',views.logout,name='logout'),
     url('dashboard/',views.dashboard,name='dashboard'),
     url('admindash/',views.admindash,name='admindash'),
+    url('subscription/',views.subscription,name='subscription'),
 ]
