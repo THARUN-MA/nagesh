@@ -1,0 +1,31 @@
+{% load static %}
+<h1>Welcome</h1>
+<a href="{% url "fs:logout"%}">Logout</a>
+<a href="{% url "fs:subscription"%}">Subscription</a>
+<a href="{% url "fs:dashboard"%}">Dashboard</a>
+
+<h1>Album songs</h1>
+
+{% if data %}
+ <br><br>
+ <table class="table">
+                    <thead>
+                      <tr>
+                        <th >S/N</th>
+                        <th >Title</th>
+                        <th >File Link</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {% for d in data %}
+                      <tr>
+                        <th>{{forloop.counter}}</th>
+                        <th>{{d.title}}</th>
+                        <!-- <th> <a  href="{{d.filesall.url}}" target="_blank"><button type="button" name="button" class="btn btn-success">Watch</button></a> </th> -->
+                        <th><a href="{% url 'fs:watchalbum' value=d.aid %}"><button  type="button" name="button" class="btn btn-success">Watch</button></a> </th>
+                      </tr>
+                      {% endfor %}
+                    </tbody>
+                  </table>
+  <script type="text/javascript" src="{% static 'js/loader.js'%}"></script>
+ {% endif %}

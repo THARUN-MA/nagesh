@@ -1,0 +1,26 @@
+{% load static %}
+<h1>Add the media files</h1>
+<a href="{% url "fs:admindash"%}">Home</a>
+<a href="{% url "fs:logout"%}">Logout</a>
+<br><br><br>
+<form method="post" enctype="multipart/form-data">
+  {% csrf_token %}
+  <label for="">Enter the Title</label>
+  <input type="text" name="title" value="" required><br><br>
+  <label for="">Upload File</label>
+  <input type="file" class="form-control" name="myfile" required>
+          <br><br>
+  <label for="">Select media Type</label>
+  <select class="" name="opt">
+  		<option value="short">Short Movie</option>
+  	  <option value="album">Album Song</option>
+  </select>
+  <br><br>
+  <label for="">Enter the Description</label><br>
+  <textarea name="desc" rows="8" cols="80" required></textarea>
+  <br><br>
+  <label for="">Enter the UPI ID</label>
+  <input type="text" name="upiid" value="" required>
+  <br><br>
+  <input type="submit" name="" value="SUBMIT">
+</form>

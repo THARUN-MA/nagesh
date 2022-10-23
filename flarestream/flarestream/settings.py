@@ -16,7 +16,7 @@ import os
 BASE_DIR = Path(__file__).resolve().parent.parent
 TD=os.path.join(BASE_DIR,'templates')
 SD=os.path.join(BASE_DIR,'static')
-
+MD=os.path.join(BASE_DIR,'media')
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'qr_code',
     'fs'
 ]
 
@@ -123,6 +124,9 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS=[
     SD,
 ]
+
+MEDIA_ROOT = MD
+MEDIA_URL = '/media/'
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
